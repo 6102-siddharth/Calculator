@@ -7,30 +7,26 @@
     <title>Calculator </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
 </head>
 
 <body>
     <div class="border border-2 border-red-700 w-[430px] h-[793px] rounded-3xl">
-
         <div class="border border-2 w-[426px] h-[270px] rounded-3xl flex items-center">
             <input type="text" id="input" readonly class="border w-full py-6 text-2xl">
         </div>
         <div class="bg-black rounded-3xl">
             <div class="flex m-2">
                 <div class="w-full flex justify-evenly">
-                    <div style="border-radius: 50%;" onclick="clearall"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-slate-200">
-                        <div class="self-center"><i class="fa-solid fa-a"></i><i class="fa-solid fa-c"></i></div>
+                    <div onclick="clearall()"
+                        class="border border-red-700 flex w-[175px] h-[80px] justify-center m-2 bg-slate-200 rounded-[50px]">
+                        <div class="self-center">
+                            <i class="fa-solid fa-a"></i><i class="fa-solid fa-c"></i>
+                        </div>
                     </div>
-                    <div style="border-radius: 50%;"
+                    <div style="border-radius: 50%;" onclick="backspace()"
                         class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-slate-200">
-                        <div class="self-center"><i class="fa-solid fa-c"></i></div>
-                    </div>
-                    <!-- Percent -->
-                    <div style="border-radius: 50%;" onclick=""
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-slate-200">
-                        <div class="self-center"><i class="fa-solid fa-percent"></i></div>
+                        <div class="self-center"> <i class="fa-solid fa-c"></i>
+                        </div>
                     </div>
                     <div style="border-radius: 50%;" onclick="handleClick('/')"
                         class="border border-red-700 flex w-[80px] h-[80px]  justify-center m-2 bg-orange-400">
@@ -121,7 +117,19 @@
 
     <script>
         const handleClick = (val) => {
-            document.getElementById("input").value += val;
+            if (!isNaN(parseInt(val))) {
+                document.getElementById("input").value += val;
+            }
+            else {
+                let inpt = document.getElementById("input").value;
+                let num = inpt.slice(-1);
+                if (!isNaN(parseInt(num))) {
+                    document.getElementById("input").value += val;
+                }
+                else {
+                    alert("Invalid Input")
+                }
+            }
         }
         const handleSolve = () => {
             let ans = eval(document.getElementById("input").value);
@@ -129,7 +137,10 @@
         }
         const clearall = () => {
             document.getElementById("input").value = ("");
-
+        }
+        const backspace = () => {
+            let inpt = document.getElementById("input").value;
+            document.getElementById('input').value = inpt.slice(0, -1)
         }
     </script>
 

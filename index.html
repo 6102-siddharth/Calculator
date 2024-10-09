@@ -132,8 +132,14 @@
             }
         }
         const handleSolve = () => {
-            let ans = eval(document.getElementById("input").value);
-            document.getElementById("input").value = ans;
+            let input = document.getElementById("input").value;
+            if (input.length > 0) {
+                let ans = eval(document.getElementById("input").value);
+                document.getElementById("input").value = ans;
+            }
+            else {
+                alert("Input the first number")
+            }
         }
         const clearall = () => {
             document.getElementById("input").value = ("");

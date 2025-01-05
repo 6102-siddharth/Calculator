@@ -4,113 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator </title>
+    <title>Responsive Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
-<body>
-    <div class="border border-2 border-red-700 w-[430px] h-[793px] rounded-3xl">
-        <div class="border border-2 w-[426px] h-[270px] rounded-3xl flex items-center">
-            <input type="text" id="input" readonly class="border w-full py-6 text-2xl">
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="border border-red-700 w-full max-w-md h-auto p-4 rounded-3xl bg-white shadow-lg">
+        <div class="w-full h-24 flex items-center mb-4">
+            <input type="text" id="input" readonly class="border w-full py-4 px-4 text-xl rounded-lg text-right">
         </div>
-        <div class="bg-black rounded-3xl">
-            <div class="flex m-2">
-                <div class="w-full flex justify-evenly">
-                    <div onclick="clearall()"
-                        class="border border-red-700 flex w-[175px] h-[80px] justify-center m-2 bg-slate-200 rounded-[50px]">
-                        <div class="self-center">
-                            <i class="fa-solid fa-a"></i><i class="fa-solid fa-c"></i>
-                        </div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="backspace()"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-slate-200">
-                        <div class="self-center"> <i class="fa-solid fa-c"></i>
-                        </div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('/')"
-                        class="border border-red-700 flex w-[80px] h-[80px]  justify-center m-2 bg-orange-400">
-                        <div class="self-center"><i class="fa-solid fa-divide"></i></div>
-                    </div>
-                </div>
-            </div>
+        <div class="bg-black rounded-3xl p-4">
+            <div class="grid grid-cols-4 gap-4">
+                <button onclick="clearall()"
+                    class="col-span-2 border border-red-700 bg-slate-200 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-a"></i><i class="fa-solid fa-c"></i>
+                </button>
+                <button onclick="backspace()" class="border border-red-700 bg-slate-200 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-c"></i>
+                </button>
+                <button onclick="handleClick('/')"
+                    class="border border-red-700 bg-orange-400 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-divide"></i>
+                </button>
 
-            <div class="flex m-2">
-                <div class="w-full flex justify-evenly">
-                    <div style="border-radius: 50%;" onclick="handleClick('7')"
-                        class=" border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-7"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('8')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-8"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('9')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-9"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('*')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center  m-2 bg-orange-400">
-                        <div class="self-center justify-self-center"><i class="fa-solid fa-xmark"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex  m-2">
-                <div class="w-full flex justify-evenly">
-                    <div style="border-radius: 50%;" onclick="handleClick('4')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-4"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('5')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-5"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('6')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-6"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('-')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-orange-400">
-                        <div class="self-center justify-self-center"><i class="fa-solid fa-minus"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex m-2">
-                <div class="w-full flex justify-evenly">
-                    <div style="border-radius: 50%;" onclick="handleClick('1')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-1"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('2')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-2"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('3')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-3"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleClick('+')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-orange-400">
-                        <div class="self-center justify-self-center"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex m-2">
-                <div class="w-full flex justify-evenly">
-                    <div onclick="handleClick('0')"
-                        class="border border-red-700 flex w-[175px] h-[80px] justify-center m-2 bg-neutral-300 rounded-[50px]">
-                        <div class="self-center"><i class="fa-solid fa-0"></i></div>
-                    </div>
+                <button onclick="handleClick('7')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">7</button>
+                <button onclick="handleClick('8')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">8</button>
+                <button onclick="handleClick('9')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">9</button>
+                <button onclick="handleClick('*')"
+                    class="border border-red-700 bg-orange-400 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
-                    <div style="border-radius: 50%;" onclick="handleClick('.')"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-neutral-300">
-                        <div class="self-center"><i class="fa-solid fa-circle"></i></div>
-                    </div>
-                    <div style="border-radius: 50%;" onclick="handleSolve()"
-                        class="border border-red-700 flex w-[80px] h-[80px] justify-center m-2 bg-orange-400">
-                        <div class="self-center justify-self-center"><i class="fa-solid fa-equals"></i></div>
-                    </div>
-                </div>
+                <button onclick="handleClick('4')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">4</button>
+                <button onclick="handleClick('5')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">5</button>
+                <button onclick="handleClick('6')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">6</button>
+                <button onclick="handleClick('-')"
+                    class="border border-red-700 bg-orange-400 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-minus"></i>
+                </button>
+
+                <button onclick="handleClick('1')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">1</button>
+                <button onclick="handleClick('2')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">2</button>
+                <button onclick="handleClick('3')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">3</button>
+                <button onclick="handleClick('+')"
+                    class="border border-red-700 bg-orange-400 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
+                <button onclick="handleClick('0')"
+                    class="col-span-2 border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">0</button>
+                <button onclick="handleClick('.')"
+                    class="border border-red-700 bg-neutral-300 rounded-full py-4 text-xl">.</button>
+                <button onclick="handleSolve()" class="border border-red-700 bg-orange-400 rounded-full py-4 text-xl">
+                    <i class="fa-solid fa-equals"></i>
+                </button>
             </div>
         </div>
     </div>
@@ -119,37 +76,36 @@
         const handleClick = (val) => {
             if (!isNaN(parseInt(val))) {
                 document.getElementById("input").value += val;
-            }
-            else {
+            } else {
                 let inpt = document.getElementById("input").value;
                 let num = inpt.slice(-1);
                 if (!isNaN(parseInt(num))) {
                     document.getElementById("input").value += val;
-                }
-                else {
-                    alert("Invalid Input")
+                } else {
+                    alert("Invalid Input");
                 }
             }
-        }
+        };
+
         const handleSolve = () => {
             let input = document.getElementById("input").value;
             if (input.length > 0) {
-                let ans = eval(document.getElementById("input").value);
+                let ans = eval(input);
                 document.getElementById("input").value = ans;
+            } else {
+                alert("Input the first number");
             }
-            else {
-                alert("Input the first number")
-            }
-        }
+        };
+
         const clearall = () => {
-            document.getElementById("input").value = ("");
-        }
+            document.getElementById("input").value = "";
+        };
+
         const backspace = () => {
             let inpt = document.getElementById("input").value;
-            document.getElementById('input').value = inpt.slice(0, -1)
-        }
+            document.getElementById("input").value = inpt.slice(0, -1);
+        };
     </script>
-
 </body>
 
 </html>
